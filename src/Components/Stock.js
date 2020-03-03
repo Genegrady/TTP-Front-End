@@ -26,7 +26,7 @@ const [stock, setStock] = useState({
     );setStock({
         ...stock,
         latestPrice: results.data.latestPrice || 0, 
-        open: stock.latestPrice || results.data.open
+        open: results.data.latestPrice || results.data.open
     })
   }
 
@@ -59,6 +59,7 @@ const [stock, setStock] = useState({
 	    padding: 20px;
         text-align: center;
     `
+    console.log(open, latestPrice)
     return (
         <StyledText>
             {ticker}--{quantity} {shares(quantity)} –– ${parseFloat(latestPrice * quantity).toFixed(2)}
