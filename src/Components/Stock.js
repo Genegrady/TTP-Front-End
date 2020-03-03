@@ -26,7 +26,7 @@ const [stock, setStock] = useState({
     );setStock({
         ...stock,
         latestPrice: results.data.latestPrice || 0, 
-        open: results.data.latestPrice || results.data.open
+        open:  results.data.open || results.data.latestPrice 
     })
   }
 
