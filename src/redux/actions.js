@@ -1,4 +1,4 @@
-const BASE_URL = 'https://stock-back.herokuapp.com/';
+const BASE_URL = 'https://stock-back.herokuapp.com';
 export const USERS_URL = BASE_URL + '/users/';
 const PERSIST_URL = BASE_URL + '/auth';
 const LOGIN_URL = BASE_URL + '/login';
