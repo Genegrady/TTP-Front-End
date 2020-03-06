@@ -1,3 +1,4 @@
+import axios from 'axios'
 const BASE_URL = 'https://stock-back.herokuapp.com';
 export const USERS_URL = BASE_URL + '/users/';
 const PERSIST_URL = BASE_URL + '/auth';
@@ -7,7 +8,7 @@ const SPECIFIC_USER_URL = id => USERS_URL + '/' + id;
 export const IEX_CLOUD_API_BASE_URL = `https://cloud.iexapis.com/stable/stock/`
 export const API_KEY = '/quote?token=' + `pk_364ef2c1afb8442fb7c5235844fcb926`
 
-// console.log(IEX_CLOUD_FETCH_URL)
+console.log(PERSIST_URL)
 
 // Redux Actions
 
@@ -33,8 +34,12 @@ const newUserToDB = userObj => dispatch => {
   fetch(USERS_URL, config)
     .then(r => r.json())
     .then(data => {
-      dispatch(setUserAction(data.user));
+      if(data.message){
+        alert(data.message)
+      }else{
       localStorage.setItem('token', data.token);
+      dispatch(setUserAction(data.user));
+      }
     });
 };
 
@@ -59,9 +64,12 @@ const loginUserToDB = userCredentials => dispatch => {
   fetch(LOGIN_URL, config)
     .then(r => r.json())
     .then(data => {
+    
       console.log(data)
       dispatch(setUserAction(data.user));
       localStorage.setItem('token', data.token);
+  
+      
     });
 };
 
@@ -69,14 +77,18 @@ const persistUser = () => dispatch => {
   const config = {
     method: 'GET',
     headers: {
-      Authorization: `bearer ` + localStorage.token
+      'Authorization': `bearer ` +localStorage.token
     }
   };
-  fetch(PERSIST_URL, config)
+if(localStorage.token !== "undefined"){
+return fetch(PERSIST_URL, config)
     .then(r => r.json())
     .then(userInstance => {
+      console.log(userInstance)
       dispatch(setUserAction(userInstance));
     });
+}
+  
 };
 
 const logoutUser = () => dispatch => {

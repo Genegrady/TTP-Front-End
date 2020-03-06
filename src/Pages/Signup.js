@@ -64,8 +64,11 @@ const Signup = props => {
   const handleSubmit = e => {
     e.preventDefault();
     const { history } = props;
-    dispatch(userActions.newUserToDB(signupForm));
-    history.push('/');
+    dispatch(userActions.newUserToDB(signupForm))
+    // dispatch(userActions.persistUser())
+    alert("Signup Successful, Please Login")
+    props.history.push('/login');
+
   };
 
   // Destructuring keys from our local state to use in the form

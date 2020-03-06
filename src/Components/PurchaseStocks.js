@@ -172,7 +172,7 @@ const handleQuantityChange = e =>
 
 console.log("ticker", ticker)
 console.log("quantity", quantity)
-console.log(props.user.balance - portfolioBalance)
+// console.log(props.user.balance - portfolioBalance)
 
 
     return (

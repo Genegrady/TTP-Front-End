@@ -5,11 +5,11 @@ const initialState={
 }
 
 
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
+export default (state = initialState, action) => {
+  switch (action.type) {
     case 'SET_USER':
       // debugger
-      return {...state, user: payload};
+      return {...state, user: action.payload};
     case 'CLEAR_USER':
       return {...state, user: {}};
     default:

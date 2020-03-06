@@ -11,7 +11,7 @@ import styled from 'styled-components';
 const Home = (props) => {
   
   //Grab the state of the user from redux
-  const user = props.user;
+  const user = useSelector(state => state.user)
   const[state, setState] = useState({
     
   })

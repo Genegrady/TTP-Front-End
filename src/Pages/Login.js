@@ -88,6 +88,7 @@ const LoginPage = props => {
     e.preventDefault();
     
     dispatch(userActions.loginUserToDB(loginForm));
+    // dispatch(userActions.persistUser())
     // debugger
     props.history.push('/');
     alert("Login Successful")
